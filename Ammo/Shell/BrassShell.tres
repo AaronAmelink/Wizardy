@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="shell" load_steps=2 format=3 uid="uid://dld0kmru4fc5t"]
+
+[ext_resource type="Script" path="res://Ammo/Shell/shell.gd" id="1_d8yde"]
+
+[resource]
+script = ExtResource("1_d8yde")
+size = 0
+pathToTexture = "res://Assets/Ammo/Brass/Shell.png"

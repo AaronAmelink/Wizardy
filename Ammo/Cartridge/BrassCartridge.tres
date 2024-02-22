@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="cartridge" load_steps=2 format=3 uid="uid://dfbi8cad8e6fd"]
+
+[ext_resource type="Script" path="res://Ammo/Cartridge/cartridge.gd" id="1_732sr"]
+
+[resource]
+script = ExtResource("1_732sr")
+pathToTexture = "res://Assets/Ammo/Brass/Cartridge.png"
+damage = 0

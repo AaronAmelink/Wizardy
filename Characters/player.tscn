@@ -1,0 +1,128 @@
+[gd_scene load_steps=22 format=3 uid="uid://cdekj14eusx3k"]
+
+[ext_resource type="Script" path="res://Characters/Movement.gd" id="1_iriq8"]
+[ext_resource type="Texture2D" uid="uid://5jjndx2giwkp" path="res://Assets/move with FX.png" id="1_n88c2"]
+[ext_resource type="Script" path="res://Characters/player.gd" id="1_qdl10"]
+[ext_resource type="Texture2D" uid="uid://dd401q3e0nte7" path="res://Assets/static idle.png" id="1_sehdl"]
+[ext_resource type="Script" path="res://Characters/Resource/statSheet.gd" id="2_0xuuw"]
+[ext_resource type="Script" path="res://Characters/animator.gd" id="4_0plm5"]
+[ext_resource type="Script" path="res://Characters/Gun.gd" id="7_t0cta"]
+[ext_resource type="Resource" uid="uid://dfbi8cad8e6fd" path="res://Ammo/Cartridge/BrassCartridge.tres" id="8_dhe61"]
+[ext_resource type="PackedScene" uid="uid://cf76vqrpme4xp" path="res://Characters/crosshair.tscn" id="13_rjb3x"]
+
+[sub_resource type="Resource" id="Resource_wp28p"]
+script = ExtResource("2_0xuuw")
+health = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xy13"]
+atlas = ExtResource("1_sehdl")
+region = Rect2(14, 0, 17, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ywo"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 0, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10lqb"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 26, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yss0"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 52, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eee55"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 78, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kh3yw"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 104, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmbpe"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 130, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xc2d"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 156, 36, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taxm8"]
+atlas = ExtResource("1_n88c2")
+region = Rect2(9, 182, 36, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fph3n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xy13")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ywo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10lqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yss0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eee55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kh3yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmbpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xc2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taxm8")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kot7l"]
+size = Vector2(32, 6)
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_qdl10")
+playerSheet = SubResource("Resource_wp28p")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 2
+motion_mode = 1
+platform_wall_layers = 1
+script = ExtResource("1_iriq8")
+SPEED = 5000
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -22)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fph3n")
+animation = &"Idle"
+script = ExtResource("4_0plm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_kot7l")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-35, -5)
+position_smoothing_enabled = true
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, -13)
+script = ExtResource("7_t0cta")
+newCartridge = ExtResource("8_dhe61")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+
+[node name="Crosshair" parent="." instance=ExtResource("13_rjb3x")]

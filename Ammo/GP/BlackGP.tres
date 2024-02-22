@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GP" load_steps=2 format=3 uid="uid://hunnoiq1ukgr"]
+
+[ext_resource type="Script" path="res://Ammo/GP/GP.gd" id="1_uesls"]
+
+[resource]
+script = ExtResource("1_uesls")
+typeID = 0
+pathToTexture = "res://Assets/Ammo/Brass/GP.png"
+bulletSpeed = 10000

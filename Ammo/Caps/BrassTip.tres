@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Tip" load_steps=2 format=3 uid="uid://drb0s2a7eud6d"]
+
+[ext_resource type="Script" path="res://Ammo/Caps/Tip.gd" id="1_c7bg7"]
+
+[resource]
+script = ExtResource("1_c7bg7")
+pathToTexture = "res://Assets/Ammo/Brass/Tip.png"

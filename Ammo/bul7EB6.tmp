@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2liesmi7ybrn"]
+
+[ext_resource type="Script" path="res://Ammo/bulletResource.gd" id="5_5b2vq"]
+[ext_resource type="Script" path="res://Ammo/SpriteInit.gd" id="7_buhp7"]
+
+[sub_resource type="GDScript" id="GDScript_wx2gc"]
+script/source = "extends Node2D
+@export var bullet : bullet
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+func setBulletResource(bulletRes):
+	bullet = bulletRes
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Resource" id="Resource_l3gbn"]
+script = ExtResource("5_5b2vq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrxtw"]
+size = Vector2(20, 56)
+
+[node name="Bullet2D" type="Node2D"]
+script = SubResource("GDScript_wx2gc")
+bullet = SubResource("Resource_l3gbn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_vrxtw")
+
+[node name="Tip" type="Sprite2D" parent="."]
+script = ExtResource("7_buhp7")
+
+[node name="Cartridge" type="Sprite2D" parent="."]
+script = ExtResource("7_buhp7")
+
+[node name="Shell" type="Sprite2D" parent="."]
+script = ExtResource("7_buhp7")
